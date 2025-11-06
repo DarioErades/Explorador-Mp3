@@ -1,0 +1,15 @@
+[
+  {
+    "rutaArchivo": "E:\\Users\\hhhfh\\eclipse-workspace\\exploradorMp3\\src\\main\\resources\\archivo.mp3",
+    "titulo": "Impact Moderato",
+    "artista": "Kevin MacLeod",
+    "album": "YouTube Audio Library",
+    "anio": "1993",
+    "comentario": "Sin comentarios",
+    "codigoGenero": 12,
+    "previewURL": "https://music.apple.com/us/album/moderato/945146840?i\u003d945146852\u0026uo\u003d4",
+    "collectionCensoredName": "Impact - EP",
+    "imagenUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music3/v4/37/f1/00/37f100be-a34c-7a71-9781-acddbf8deaf4/5054316134886_cover.jpg/100x100bb.jpg",
+    "trackPrice": 0.99
+  }
+]
