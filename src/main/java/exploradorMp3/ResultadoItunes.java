@@ -7,12 +7,21 @@ public class ResultadoItunes {
     public String collectionCensoredName;
     public String artworkUrl100;
     public float trackPrice;
-
-    public ResultadoItunes(String trackViewUrl, String collectionCensoredName, String artworkUrl100, float trackPrice) {
+    public String primaryGenreName;
+    public ResultadoItunes(String trackViewUrl, String collectionCensoredName, String artworkUrl100, float trackPrice,String generoNombre) {
         this.trackViewUrl = trackViewUrl;
         this.collectionCensoredName = collectionCensoredName;
         this.artworkUrl100 = artworkUrl100;
         this.trackPrice = trackPrice;
+        this.primaryGenreName = generoNombre;
+    }
+
+    public String getPrimaryGenreName() {
+        return primaryGenreName;
+    }
+
+    public void setPrimaryGenreName(String primaryGenreName) {
+        this.primaryGenreName = primaryGenreName;
     }
 
     public String getTrackViewUrl() {

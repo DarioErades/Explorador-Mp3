@@ -1,7 +1,7 @@
 package exploradorMp3;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import exploradorMp3.BD.UtilsBD;
+import exploradorMp3.Model.Cancion;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -38,12 +38,6 @@ public class Main {
 				la nueva ejecución.
 			 */
 			String rutaArchivos = args[1];
-			if (args.length < 3) {
-                System.out.println("Falta el parámetro para el archivo binario de salida");
-                return;
-            }
-			String archivoSalida = args[2];
-
 			List<String> rutasDirectorio = new ArrayList<>();
 			try {
                 rutasDirectorio = Files.readAllLines(Paths.get(rutaArchivos), StandardCharsets.UTF_8);
@@ -68,36 +62,24 @@ public class Main {
 	                ExploradorMP3.buscarMp3Recursivo(dir, canciones); // Ejecuto método para buscar mp3 y meterlo en la lista de canciones
 	            }
 			 
-			 
-			 // Serializo la lista entera
-			 
-			 try (FileOutputStream fs = new FileOutputStream(archivoSalida);
-	                 ObjectOutputStream os = new ObjectOutputStream(fs)) {
-	                os.writeObject(canciones);
-	                System.out.println("Serialización completada. Canciones guardadas: " + canciones.size());
-	            } catch (IOException e) {
-	                System.err.println("Error serializando en: " + archivoSalida);
-	                e.printStackTrace();
-	            }
-
 		}else if(args[0].equalsIgnoreCase("-L")) {
-			 String ficheroBinario = args[1];
-			    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ficheroBinario))) {
-			        List<Cancion> canciones = (List<Cancion>) ois.readObject();
-			        for (Cancion c : canciones) {
-			            System.out.println(c);
-			        }
-			    } catch (IOException | ClassNotFoundException e) {
-			        System.err.println("Error leyendo el fichero binario: " + ficheroBinario);
-			        e.printStackTrace();
-			    }
-
-		}else if (args[0].equalsIgnoreCase("-J")) {
-			if (args.length < 3) {
-				System.out.println("Faltan parámetros: ruta del binario y ruta de salida JSON");
+			 // Muestro los datos de la DB
+			if(args.length < 2){
+				System.out.println("Se necesitan 2 argumentos");
 				return;
 			}
-			ExportarAJson.exportarAJson(args[1],args[2]);
+			if (args[1].equalsIgnoreCase("-c")) {
+				UtilsBD.mostrarCancionesPorConsola();
+			} else if (args[1].equalsIgnoreCase("-b")) {
+				UtilsBD.mostrarAlbumesPorConsola();
+			} else if (args[1].equalsIgnoreCase("-g")) {
+				UtilsBD.mostrarGenerosPorConsola();
+			} else if (args[1].equalsIgnoreCase("-a")) {
+				UtilsBD.mostrarArtistasPorConsola();
+			} else {
+				System.out.println("Opción no reconocida");
+
+			}
 		}else {
 			System.out.println("El modo introducido no es válido");
 		}

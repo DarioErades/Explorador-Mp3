@@ -2,6 +2,7 @@ package exploradorMp3;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import exploradorMp3.Model.Cancion;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;
